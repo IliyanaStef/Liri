@@ -71,7 +71,7 @@ function concertThis() {
     if (Input !== "" && Input !== null) {
 		artist = Input;
 	} else {
-		artist= "I don't know what to search for!";
+		console.log("\nI don't know what to search for!".yellow);
 	}
 	
 	var bandsUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
