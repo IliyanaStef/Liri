@@ -7,7 +7,7 @@ var Spotify = require('node-spotify-api');
 var moment = require('moment');
 var command = process.argv[2];
 var Input = process.argv.slice(3).join(" ");
-	
+
 // Function to call and return user's provided song
 function spotifyThis() {
     var spotify = new Spotify(keys.spotify);
@@ -24,8 +24,8 @@ function spotifyThis() {
   		if (error) {
     		return console.log("Error occurred: " + error);
   		}
-		console.log("\nTHE SONG YOU REQUESTED:\n" + "\nArtist: " + data.tracks.items[0].album.artists[0].name + "\nSong: " + query + "\nAlbum: " + data.tracks.items[0].album.name + "\nPreview link: " + data.tracks.items[0].album.artists[0].external_urls.spotify + "\n---------------\n");
-		fs.appendFile("log.txt", "\nTHE SONG YOU REQUESTED:\n" + "\nArtist: " + data.tracks.items[0].album.artists[0].name + "\nSong: " + query + "\nAlbum: " + data.tracks.items[0].album.name + "\nPreview link: " + data.tracks.items[0].album.artists[0].external_urls.spotify + "\n---------------\n", 
+		console.log("\nTHE SONG YOU REQUESTED:\n" + "\nArtist: " + data.tracks.items[0].album.artists[0].name + "\nSong: " + query + "\nAlbum: " + data.tracks.items[0].album.name + "\nPreview link: " + data.tracks.items[0].album.artists[0].external_urls.spotify + "\nEnjoy!");
+		fs.appendFile("log.txt", "\nTHE SONG YOU REQUESTED:\n" + "\nArtist: " + data.tracks.items[0].album.artists[0].name + "\nSong: " + query + "\nAlbum: " + data.tracks.items[0].album.name + "\nPreview link: " + data.tracks.items[0].album.artists[0].external_urls.spotify + "\nEnjoy!" + "\n---------------\n", 
 		function(error) {
 			if (error) {
 				console.log(error);
@@ -62,7 +62,7 @@ function movieThis() {
 // Function to call and return user's provided artist/band concert search
 function concertThis() {
 	var artist;
-	
+
 	// if the user does not provide an artist/band Liri will respond with "I don't know what to search for!"
     if (Input !== "" && Input !== null) {
 		artist = Input;
@@ -75,8 +75,10 @@ function concertThis() {
 	axios.get(bandsUrl)
 		.then(
         function (response) {
-		var convertedDate = moment(response.data[0].datetime, "YYYY-MM-DD").format("MM/DD/YYYY")
-        console.log("\nTHE INFO YOU REQUESTED:\n" + "\nVenue: " + response.data[0].venue.name + "\nLocation: " + response.data[0].venue.city + "," + response.data[0].venue.country + "\nDate of the event: " + convertedDate + "\nHave fun!");
+		for (i = 0; i < response.data.length; i++) {
+		var convertedDate = moment(response.data[i].datetime, "YYYY-MM-DD").format("MM/DD/YYYY")
+        console.log("\nTHE INFO YOU REQUESTED:\n" + "\nPerformer: " + artist + "\nVenue: " + response.data[i].venue.name + "\nLocation: " + response.data[i].venue.city + "," + response.data[i].venue.country + "\nDate of the event: " + convertedDate + "\nHave fun!");
+		}
 	})
 		.catch(function (error) {
 			console.log(error);
