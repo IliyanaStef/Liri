@@ -18,18 +18,19 @@ npm install
 
 # Using the app:
 
-Spotify:
-node liri.js spotify-this-song 'song name here'
+*Spotify:
+node liri.js spotify-this 'song name here'
 
-Movie:
+*Movie:
 node liri.js movie-this 'movie name here'
 
-Concert:
+*Concert:
 node liri.js concert-this 'artist/band name here'
 
-Custom command:
+*Custom command:
 node liri.js 'do-what-it-says'
-Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI’s commands. It should run spotify-this-song for “I Want it That Way,” as follows the text in random.txt.
+Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI’s commands. It should run spotify-this for “I Want it That Way,” as follows the text in random.txt.
 
 Demo:
-https://drive.google.com/file/d/1aoeO2mngap_BDakTwgdW3yVpqMN7ZqBG/view
+https://drive.google.com/file/d/1H4jr0gXorMl6lc_N_ao8J9P4nb2-w2DB/view?usp=sharing
+
